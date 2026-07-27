@@ -1,0 +1,15 @@
+{
+  "name": "المسابقة الثقافية - صيف القمع ١٤٤٨هـ",
+  "short_name": "مسابقة القمع",
+  "description": "تطبيق استقبال مشاركات أهالي قرية القمع في المسابقة الثقافية",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7efd5",
+  "theme_color": "#064c3d",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

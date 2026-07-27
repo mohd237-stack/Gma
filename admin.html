@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#064c3d">
+  <meta name="robots" content="noindex,nofollow">
+  <title>إدارة المسابقة الثقافية</title>
+  <link rel="icon" href="/assets/icon-192.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="admin-body">
+  <main class="admin-shell">
+    <header class="admin-header">
+      <div class="admin-brand">
+        <img src="/assets/qama-center-logo.jpg" alt="شعار مركز القمع الاجتماعي">
+        <div><h1>إدارة المسابقة الثقافية</h1><p>صيف القمع ١٤٤٨هـ</p></div>
+      </div>
+      <a class="secondary-btn" href="/" style="text-decoration:none;display:grid;place-items:center">صفحة المشاركة</a>
+    </header>
+
+    <section id="loginView" class="admin-card login-card">
+      <h2>دخول الإدارة</h2>
+      <p style="color:var(--muted);line-height:1.8">هذه الصفحة مخصصة لإدارة المشاركات والنتائج والسحب العشوائي.</p>
+      <form id="loginForm">
+        <label class="field"><span>الرقم السري</span><input id="password" type="password" autocomplete="current-password" required></label>
+        <button class="primary-btn" type="submit">دخول</button>
+      </form>
+      <div id="loginMessage" class="status-banner error hidden" style="margin-top:12px"></div>
+    </section>
+
+    <section id="dashboardView" class="hidden">
+      <div id="adminMessage" class="status-banner admin-message hidden"></div>
+      <div class="admin-grid">
+        <div class="stat-card"><span>إجمالي المشاركات</span><strong id="statTotal">0</strong></div>
+        <div class="stat-card"><span>الإجابات الكاملة</span><strong id="statPerfect">0</strong></div>
+        <div class="stat-card"><span>عدد الفائزين</span><strong id="statWinners">0</strong></div>
+        <div class="stat-card"><span>حالة الاستقبال</span><strong id="statStatus" style="font-size:1rem">مفتوح</strong></div>
+      </div>
+
+      <div class="admin-actions">
+        <button id="refreshBtn" class="secondary-btn">تحديث البيانات</button>
+        <button id="exportBtn" class="secondary-btn">تصدير CSV</button>
+        <button id="toggleOpenBtn" class="secondary-btn">إغلاق الاستقبال</button>
+        <button id="resetWinnersBtn" class="danger-btn">مسح سجل الفائزين</button>
+        <button id="logoutBtn" class="danger-btn">تسجيل الخروج</button>
+      </div>
+
+      <div class="dashboard-layout">
+        <div>
+          <section class="admin-card draw-card">
+            <h2>السحب والفرز العشوائي</h2>
+            <div class="draw-controls">
+              <label class="field"><span>المستحقون للسحب</span>
+                <select id="drawPool"><option value="perfect">أصحاب الإجابات الكاملة</option><option value="all">جميع المشاركين</option></select>
+              </label>
+              <label class="field"><span>الفئة</span>
+                <select id="drawCategory"><option value="all">جميع الفئات</option><option value="men">رجال</option><option value="women">نساء</option><option value="children">أطفال</option></select>
+              </label>
+            </div>
+            <div id="drawStage" class="draw-stage">
+              <div><div style="font-size:2rem">🎁</div><p>اضغط زر «فرز فائز» لاختيار اسم عشوائي دون تكرار الفائزين.</p></div>
+            </div>
+            <button id="drawBtn" class="primary-btn" style="margin-top:12px">فرز فائز عشوائي</button>
+          </section>
+
+          <section class="admin-card history-card">
+            <h2>سجل الفائزين</h2>
+            <div id="historyList" class="history-list"></div>
+          </section>
+        </div>
+
+        <section class="admin-card table-card">
+          <h2>المشاركات والنتائج</h2>
+          <div class="table-tools">
+            <input id="searchInput" type="search" placeholder="بحث بالاسم أو الرقم">
+            <select id="filterCategory"><option value="all">كل الفئات</option><option value="men">رجال</option><option value="women">نساء</option><option value="children">أطفال</option></select>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>الاسم</th><th>الفئة</th><th>رقم الجوال</th><th>النتيجة</th><th>وقت الإرسال</th><th>حذف</th></tr></thead>
+              <tbody id="participantsBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="/admin.js" defer></script>
+</body>
+</html>
